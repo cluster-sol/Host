@@ -1,0 +1,173 @@
+---
+layout: default
+title: "Client Sprint Portal & Telemetry Showcase"
+subtitle: "A private client command center to inspect live sprint progress, test staging releases, monitor AI token usage, and manage milestone invoices."
+badge: "Client Hub"
+---
+
+<div class="page-hero-banner" style="background: radial-gradient(circle at 50% 0%, rgba(219, 234, 254, 0.5) 0%, rgba(248, 250, 252, 0) 70%); padding: 4.5rem 0 3rem; border-bottom: 1px solid var(--border-subtle); text-align: center;">
+  <div class="container">
+    <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+      <span class="badge badge-primary">Client Command Center</span>
+      <span class="badge badge-emerald"><i class="fas fa-lock mr-1"></i> Authenticated Workspace</span>
+    </div>
+    <h1 style="font-size: 2.75rem; color: var(--text-main); margin-bottom: 0.75rem; font-weight: 900; letter-spacing: -0.03em;">
+      Live Sprint Telemetry &amp; Milestones
+    </h1>
+    <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 680px; margin: 0 auto;">
+      Every paying client receives full visibility into their active sprint velocity, live staging builds, and automated billing ledgers.
+    </p>
+  </div>
+</div>
+
+<div class="section-padding" style="background: #FFFFFF;">
+  <div class="container" style="max-width: 1040px;">
+    <!-- Active Project Executive Card -->
+    <div style="background: #0F172A; color: #FFFFFF; border-radius: var(--radius-xl); padding: 2.5rem; margin-bottom: 2.5rem; box-shadow: var(--shadow-xl);">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="badge badge-emerald text-xs" style="margin-bottom: 0.5rem;">
+            <i class="fas fa-circle text-xs" style="font-size: 6px;"></i> Active Sprint
+          </span>
+          <h2 style="font-size: 1.85rem; color: #FFFFFF; margin: 0 0 0.25rem;">PRJ-2026-0042: Fintech B2B FIRA Settlement Portal</h2>
+          <div style="font-size: 0.85rem; color: #94A3B8;">
+            Client: <strong>Aura Global Remit Inc.</strong> • Tech Stack: Next.js 15, Cloudflare D1, n8n, Stripe
+          </div>
+        </div>
+
+        <div style="text-align: right;">
+          <div style="font-size: 2rem; font-weight: 900; color: #38BDF8;">75%</div>
+          <div style="font-size: 0.75rem; color: #94A3B8; text-transform: uppercase;">Sprint 3 of 4 Completed</div>
+        </div>
+      </div>
+
+      <!-- Milestone Stepper Bar -->
+      <div style="background: rgba(255, 255, 255, 0.1); border-radius: 999px; height: 10px; margin-bottom: 2rem; overflow: hidden;">
+        <div style="background: linear-gradient(90deg, #3B82F6 0%, #10B981 100%); width: 75%; height: 100%;"></div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <a href="https://staging.clustersol.agency" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="background: #2563EB;">
+          <i class="fas fa-external-link-alt mr-1"></i> Open Live Staging
+        </a>
+        <a href="https://figma.com" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm" style="border: 1px solid rgba(255, 255, 255, 0.2);">
+          <i class="fab fa-figma mr-1"></i> Figma Design System
+        </a>
+        <a href="/downloads/build.apk" class="btn btn-dark btn-sm" style="border: 1px solid rgba(255, 255, 255, 0.2);">
+          <i class="fas fa-mobile-screen mr-1"></i> Download Staging APK
+        </a>
+        <a href="/invoice/" class="btn btn-secondary btn-sm">
+          <i class="fas fa-file-invoice mr-1"></i> Stamped Tax Invoices
+        </a>
+      </div>
+    </div>
+
+    <!-- AI & Automation Telemetry Dashboard -->
+    <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 2.5rem; margin-bottom: 2.5rem; box-shadow: var(--shadow-sm);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+        <div>
+          <h3 style="font-size: 1.5rem; color: var(--text-main); margin: 0 0 4px;">
+            <i class="fas fa-chart-line text-blue-600 mr-1"></i> Monthly Automation Telemetry
+          </h3>
+          <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">
+            Live metrics aggregated from your self-hosted n8n instance and LLM token usage.
+          </p>
+        </div>
+        <span class="badge badge-emerald text-xs">
+          <i class="fas fa-sync fa-spin mr-1"></i> Synced 5m ago
+        </span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+        <div style="background: var(--bg-surface-alt); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">n8n Workflow Runs</div>
+          <div style="font-size: 2rem; font-weight: 900; color: var(--primary); margin: 0.25rem 0;">248,910</div>
+          <div style="font-size: 0.75rem; color: var(--accent-emerald); font-weight: 600;">
+            <i class="fas fa-arrow-up mr-1"></i> +18.4% vs last month
+          </div>
+        </div>
+
+        <div style="background: var(--bg-surface-alt); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">LLM Tokens Consumed</div>
+          <div style="font-size: 2rem; font-weight: 900; color: var(--secondary); margin: 0.25rem 0;">14.8M</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted);">
+            Claude 3.5 Sonnet / Prompt Cached
+          </div>
+        </div>
+
+        <div style="background: var(--bg-surface-alt); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Employee Hours Saved</div>
+          <div style="font-size: 2rem; font-weight: 900; color: var(--accent-emerald); margin: 0.25rem 0;">142.5 hrs</div>
+          <div style="font-size: 0.75rem; color: var(--accent-emerald); font-weight: 600;">
+            ≈ ₹2,85,000 payroll value
+          </div>
+        </div>
+
+        <div style="background: var(--bg-surface-alt); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Edge Uptime SLA</div>
+          <div style="font-size: 2rem; font-weight: 900; color: var(--primary-deep); margin: 0.25rem 0;">99.98%</div>
+          <div style="font-size: 0.75rem; color: var(--accent-emerald); font-weight: 600;">
+            Cloudflare Enterprise WAF
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Client Invoices Table -->
+    <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 2.5rem; box-shadow: var(--shadow-sm);">
+      <h3 style="font-size: 1.5rem; color: var(--text-main); margin-bottom: 1.25rem;">
+        <i class="fas fa-file-invoice-dollar text-blue-600 mr-1"></i> Milestone Billing Ledger
+      </h3>
+
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border-subtle); text-align: left; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase;">
+              <th style="padding: 0.75rem 1rem;">Invoice No.</th>
+              <th style="padding: 0.75rem 1rem;">Milestone Description</th>
+              <th style="padding: 0.75rem 1rem;">Amount</th>
+              <th style="padding: 0.75rem 1rem;">Status</th>
+              <th style="padding: 0.75rem 1rem; text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <td style="padding: 1rem; font-family: var(--font-mono); font-weight: 700;">INV-2026-0042</td>
+              <td style="padding: 1rem; font-weight: 600;">40% Advance — Architecture &amp; Scaffolding</td>
+              <td style="padding: 1rem; font-weight: 700; color: var(--text-main);">₹1,40,000</td>
+              <td style="padding: 1rem;"><span class="badge badge-emerald text-xs">PAID (UPI)</span></td>
+              <td style="padding: 1rem; text-align: right;">
+                <a href="/invoice/" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 4px 8px;">
+                  <i class="fas fa-file-pdf mr-1"></i> View Receipt
+                </a>
+              </td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <td style="padding: 1rem; font-family: var(--font-mono); font-weight: 700;">INV-2026-0058</td>
+              <td style="padding: 1rem; font-weight: 600;">30% Milestone — Staging UAT Sign-off</td>
+              <td style="padding: 1rem; font-weight: 700; color: var(--text-main);">₹1,05,000</td>
+              <td style="padding: 1rem;"><span class="badge badge-amber text-xs">DUE IN 3 DAYS</span></td>
+              <td style="padding: 1rem; text-align: right;">
+                <a href="/invoice/" class="btn btn-primary btn-sm" style="font-size: 0.75rem; padding: 4px 8px;">
+                  <i class="fas fa-credit-card mr-1"></i> Pay Milestone
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 1rem; font-family: var(--font-mono); font-weight: 700; color: var(--text-muted);">INV-2026-0071</td>
+              <td style="padding: 1rem; color: var(--text-muted);">30% Final — Production Launch &amp; Handover</td>
+              <td style="padding: 1rem; font-weight: 700; color: var(--text-muted);">₹1,05,000</td>
+              <td style="padding: 1rem;"><span class="badge badge-dark text-xs">UPCOMING</span></td>
+              <td style="padding: 1rem; text-align: right; color: var(--text-muted); font-size: 0.8rem;">
+                Pending Sprint 4
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include cta-banner.html %}

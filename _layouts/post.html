@@ -1,0 +1,84 @@
+---
+layout: default
+---
+
+<article class="section-padding" style="background: var(--bg-surface); border-bottom: 1px solid var(--border-subtle);">
+  <div class="container article-container">
+    <div class="article-header">
+      <div style="margin-bottom: 0.75rem;">
+        <a href="/blog/" style="font-size: 0.85rem; font-weight: 700; color: var(--primary);">
+          <i class="fas fa-arrow-left mr-1"></i> Back to Engineering Blog &amp; Updates
+        </a>
+      </div>
+
+      {% if page.category %}
+        <span class="badge badge-primary text-xs">{{ page.category }}</span>
+      {% endif %}
+
+      <h1 class="article-title">{{ page.title }}</h1>
+
+      <div class="article-meta-bar">
+        <div>
+          <i class="far fa-calendar-alt mr-1"></i> {{ page.date | date: "%B %d, %Y" }}
+        </div>
+        <div>
+          <i class="far fa-user mr-1"></i> {{ page.author | default: site.company.name }}
+        </div>
+        <div>
+          <i class="far fa-clock mr-1"></i>
+          {% assign words = content | number_of_words %}
+          {% if words < 360 %}
+            1 min read
+          {% else %}
+            {{ words | divided_by: 180 }} min read
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    {% if page.cover_image %}
+      <div style="margin-bottom: 2.5rem; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid var(--border-subtle);">
+        <img src="{{ page.cover_image }}" alt="{{ page.title }}" style="width: 100%; height: auto; max-height: 440px; object-fit: cover;">
+      </div>
+    {% endif %}
+
+    <div class="article-content">
+      {{ content }}
+    </div>
+
+    <!-- Tags & Sharing Row -->
+    <div style="margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Tags:</span>
+        {% for tag in page.tags %}
+          <span class="tech-pill font-mono">{{ tag }}</span>
+        {% endfor %}
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; align-items: center;">
+        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Share:</span>
+        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ page.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 4px 10px;" title="Share on X">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 4px 10px;" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Author Profile Card -->
+    <div style="margin-top: 2.5rem; background: var(--bg-surface-alt); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.75rem; display: flex; gap: 1.5rem; align-items: center;">
+      <div style="width: 64px; height: 64px; border-radius: 50%; background: #EFF6FF; border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--primary); flex-shrink: 0;">
+        <i class="fas fa-terminal"></i>
+      </div>
+      <div>
+        <h4 style="margin: 0 0 4px; font-size: 1.1rem; color: var(--text-main);">Cluster Sol Engineering Team</h4>
+        <p style="margin: 0; font-size: 0.875rem; color: var(--text-body); line-height: 1.5;">
+          Staff engineers and AI researchers building high-scale full-stack systems, RAG knowledge bases, and event-driven automation for enterprise clients globally.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+{% include cta-banner.html %}

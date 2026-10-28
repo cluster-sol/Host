@@ -1,0 +1,234 @@
+---
+layout: default
+title: "Official Stamped GST & LUT Tax Invoice"
+badge: "Billing Studio"
+---
+
+<div class="no-print page-hero-banner" style="background: radial-gradient(circle at 50% 0%, rgba(219, 234, 254, 0.5) 0%, rgba(248, 250, 252, 0) 70%); padding: 3rem 0 2rem; border-bottom: 1px solid var(--border-subtle); text-align: center;">
+  <div class="container">
+    <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+      <span class="badge badge-primary">Official Tax Document</span>
+      <span class="badge badge-emerald"><i class="fas fa-stamp mr-1"></i> XML Official Seal Verified</span>
+    </div>
+    <h1 style="font-size: 2.25rem; color: var(--text-main); margin-bottom: 0.5rem; font-weight: 900;">
+      Official Stamped Tax Invoice Studio
+    </h1>
+    <p style="font-size: 1rem; color: var(--text-muted); max-width: 650px; margin: 0 auto 1.5rem;">
+      Compliant with Central Goods and Services Tax Act 2017 &amp; Zero-Rated Export under LUT.
+    </p>
+
+    <!-- Invoice Action Controls -->
+    <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+      <button type="button" class="btn btn-primary" onclick="window.print()">
+        <i class="fas fa-print mr-1"></i> Print / Download Stamped PDF
+      </button>
+      <button type="button" class="btn btn-secondary" id="toggle-tax-mode-btn" onclick="toggleInvoiceMode()">
+        <i class="fas fa-repeat mr-1"></i> Switch Domestic (18% GST) / Global (0% LUT Export)
+      </button>
+      <a href="/portal/" class="btn btn-dark">
+        <i class="fas fa-arrow-left mr-1"></i> Back to Portal
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="section-padding" style="background: #F1F5F9; padding-top: 3rem; padding-bottom: 4rem;">
+  <div class="container">
+    <!-- Pixel-Perfect Printable Tax Invoice -->
+    <div class="invoice-container" id="printable-tax-invoice">
+      <!-- Embedded Pure XML Rubber Stamp Seal -->
+      <img src="/assets/brand/company_stamp.svg" alt="Official Circular Seal" class="invoice-stamp-seal">
+
+      <!-- Header: Logo & Tax Registration -->
+      <div class="invoice-header">
+        <div>
+          <img src="/assets/brand/company_logo.svg" alt="{{ site.company.name }}" width="220" style="margin-bottom: 0.75rem;">
+          <div style="font-size: 0.85rem; color: #1E293B; line-height: 1.5;">
+            <strong>{{ site.company.legal_name }}</strong><br>
+            {{ site.company.address.street }}<br>
+            {{ site.company.address.city }}, {{ site.company.address.state }} {{ site.company.address.pincode }}, {{ site.company.address.country }}<br>
+            <strong>GSTIN:</strong> {{ site.company.gstin }} | <strong>PAN:</strong> {{ site.company.pan }}<br>
+            <strong>CIN:</strong> {{ site.company.cin }} | <strong>MSME:</strong> {{ site.company.udyam }}
+          </div>
+        </div>
+
+        <div style="text-align: right;">
+          <h2 style="font-size: 1.75rem; color: #1E3A8A; font-weight: 900; margin: 0 0 0.5rem;" id="invoice-type-title">
+            TAX INVOICE
+          </h2>
+          <div style="font-size: 0.85rem; color: #475569; line-height: 1.6;">
+            <div><strong>Invoice No:</strong> <span style="font-family: var(--font-mono); font-weight: 700; color: #0F172A;">INV-2026-0042</span></div>
+            <div><strong>Date of Issue:</strong> 26-Oct-2026</div>
+            <div><strong>Due Date:</strong> 05-Nov-2026</div>
+            <div><strong>Place of Supply:</strong> Delhi (07)</div>
+            <div id="lut-notice-line" style="display: none; color: #065F46; font-weight: 700; margin-top: 4px;">
+              LUT ARN: {{ site.company.lut_arn }} (Zero-Rated Export)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bill To & Project References -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; padding: 1.25rem; background: #F8FAFC; border-radius: 8px; border: 1px solid #E2E8F0; font-size: 0.875rem;">
+        <div>
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748B; text-transform: uppercase; margin-bottom: 0.35rem;">Billed To (Client):</div>
+          <div style="font-size: 1rem; font-weight: 800; color: #0F172A;">Aura Global Remit Inc.</div>
+          <div style="color: #475569; line-height: 1.5; margin-top: 0.25rem;">
+            Attn: Finance &amp; Product Operations<br>
+            548 Market Street, Suite 34091<br>
+            San Francisco, CA 94104, United States<br>
+            <strong>Email:</strong> billing@auraremit.com<br>
+            <strong>Client Ref:</strong> CL-2026-001 • Project: PRJ-2026-0042
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748B; text-transform: uppercase; margin-bottom: 0.35rem;">Milestone Details:</div>
+          <div style="color: #475569; line-height: 1.6;">
+            <div><strong>Project:</strong> Cross-Border FIRA Settlement Engine</div>
+            <div><strong>Scope Stage:</strong> Sprint 3 — Staging UAT Sign-off (30% Milestone)</div>
+            <div><strong>Target Cutover:</strong> 15-Nov-2026</div>
+            <div><strong>Payment Mode:</strong> International Wire / Stripe USD / Domestic UPI</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Itemized Table -->
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem; margin-bottom: 2rem;">
+        <thead>
+          <tr style="background: #1E3A8A; color: #FFFFFF; text-align: left;">
+            <th style="padding: 10px 14px;">#</th>
+            <th style="padding: 10px 14px;">Description of Services</th>
+            <th style="padding: 10px 14px;">HSN/SAC</th>
+            <th style="padding: 10px 14px; text-align: right;">Rate / Unit</th>
+            <th style="padding: 10px 14px; text-align: right;">Amount (INR)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid #E2E8F0;">
+            <td style="padding: 12px 14px;">1</td>
+            <td style="padding: 12px 14px;">
+              <strong>Custom B2B SaaS Engineering &amp; Settlement Architecture</strong><br>
+              <span style="font-size: 0.775rem; color: #64748B;">
+                Sprint 3 Milestone: Next.js 15 Edge SSR, Supabase RLS multi-tenant database, automated n8n webhook worker, and staging deployment.
+              </span>
+            </td>
+            <td style="padding: 12px 14px; font-family: var(--font-mono);">998314</td>
+            <td style="padding: 12px 14px; text-align: right;">₹1,00,000.00</td>
+            <td style="padding: 12px 14px; text-align: right; font-weight: 600;">₹1,00,000.00</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #E2E8F0;">
+            <td style="padding: 12px 14px;">2</td>
+            <td style="padding: 12px 14px;">
+              <strong>Cloudflare Enterprise Edge Configuration &amp; WAF Hardening</strong><br>
+              <span style="font-size: 0.775rem; color: #64748B;">
+                Rate-limiting rules, zero-downtime routing, and DDoS mitigation setup.
+              </span>
+            </td>
+            <td style="padding: 12px 14px; font-family: var(--font-mono);">998315</td>
+            <td style="padding: 12px 14px; text-align: right;">₹5,000.00</td>
+            <td style="padding: 12px 14px; text-align: right; font-weight: 600;">₹5,000.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Summary Calculation Section -->
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap; gap: 2rem;">
+        <!-- Banking & Wire Transfer Details -->
+        <div style="flex: 1; min-width: 280px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 1.25rem; font-size: 0.8rem; line-height: 1.6;">
+          <div style="font-weight: 800; color: #1E3A8A; margin-bottom: 0.5rem; text-transform: uppercase;">
+            <i class="fas fa-building-columns mr-1"></i> Remittance &amp; Banking Details
+          </div>
+          <div><strong>Beneficiary:</strong> {{ site.company.banking.account_name }}</div>
+          <div><strong>Bank Name:</strong> {{ site.company.banking.bank_name }}</div>
+          <div><strong>Branch:</strong> {{ site.company.banking.branch }}</div>
+          <div><strong>Account No:</strong> <span style="font-family: var(--font-mono); font-weight: 700;">{{ site.company.banking.account_number }}</span></div>
+          <div><strong>IFSC Code:</strong> <span style="font-family: var(--font-mono);">{{ site.company.banking.ifsc }}</span></div>
+          <div><strong>SWIFT / BIC:</strong> <span style="font-family: var(--font-mono);">{{ site.company.banking.swift }}</span></div>
+          <div><strong>UPI VPA:</strong> <span style="font-family: var(--font-mono);">{{ site.company.banking.upi_id }}</span></div>
+        </div>
+
+        <!-- Calculations Table -->
+        <div style="width: 300px; font-size: 0.875rem;">
+          <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #E2E8F0;">
+            <span style="color: #64748B;">Subtotal:</span>
+            <strong style="color: #0F172A;">₹1,05,000.00</strong>
+          </div>
+          <div id="tax-row-cgst" style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #E2E8F0;">
+            <span style="color: #64748B;">CGST (9%):</span>
+            <span style="color: #0F172A;">₹9,450.00</span>
+          </div>
+          <div id="tax-row-sgst" style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #E2E8F0;">
+            <span style="color: #64748B;">SGST (9%):</span>
+            <span style="color: #0F172A;">₹9,450.00</span>
+          </div>
+          <div id="tax-row-lut" style="display: none; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #E2E8F0; color: #065F46;">
+            <span>IGST under LUT (0%):</span>
+            <strong>₹0.00 ($0.00)</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 2px solid #0F172A; font-size: 1.15rem;">
+            <strong style="color: #0F172A;">Total Payable:</strong>
+            <strong style="color: #1E3A8A;" id="invoice-total-display">₹1,23,900.00</strong>
+          </div>
+          <div style="font-size: 0.725rem; color: #64748B; margin-top: 4px; text-align: right;" id="currency-equivalent">
+            (Equivalent: ≈ $1,475 USD)
+          </div>
+        </div>
+      </div>
+
+      <!-- Signatory & Terms Footer -->
+      <div style="border-top: 1px solid #CBD5E1; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; font-size: 0.75rem; color: #64748B;">
+        <div style="max-width: 440px; line-height: 1.5;">
+          <strong>Terms &amp; Conditions:</strong><br>
+          1. Payment is due within 10 calendar days of invoice presentation.<br>
+          2. Intellectual property and source code transfer occurs upon 100% invoice settlement.<br>
+          3. Delayed payments beyond 45 days attract statutory interest under the MSME Development Act, 2006.
+        </div>
+
+        <div style="text-align: center; min-width: 200px;">
+          <div style="font-weight: 700; color: #0F172A; margin-bottom: 45px;">
+            For {{ site.company.legal_name }}
+          </div>
+          <div style="border-top: 1px solid #0F172A; padding-top: 4px; font-weight: 800; color: #0F172A;">
+            Authorized Signatory
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let isDomestic = true;
+
+function toggleInvoiceMode() {
+  isDomestic = !isDomestic;
+  const title = document.getElementById('invoice-type-title');
+  const lutLine = document.getElementById('lut-notice-line');
+  const cgst = document.getElementById('tax-row-cgst');
+  const sgst = document.getElementById('tax-row-sgst');
+  const lut = document.getElementById('tax-row-lut');
+  const total = document.getElementById('invoice-total-display');
+  const equiv = document.getElementById('currency-equivalent');
+
+  if (isDomestic) {
+    title.textContent = 'TAX INVOICE';
+    lutLine.style.display = 'none';
+    cgst.style.display = 'flex';
+    sgst.style.display = 'flex';
+    lut.style.display = 'none';
+    total.textContent = '₹1,23,900.00';
+    equiv.textContent = '(Equivalent: ≈ $1,475 USD)';
+    if (typeof showToast === 'function') showToast('Switched to Domestic GST Mode (18% GST Applied)', 'success');
+  } else {
+    title.textContent = 'EXPORT INVOICE (LUT)';
+    lutLine.style.display = 'block';
+    cgst.style.display = 'none';
+    sgst.style.display = 'none';
+    lut.style.display = 'flex';
+    total.textContent = '₹1,05,000.00 ($1,250 USD)';
+    equiv.textContent = 'Zero-Rated Supply of Services under Bond / LUT without payment of IGST';
+    if (typeof showToast === 'function') showToast('Switched to International Export Mode (0% IGST under LUT)', 'success');
+  }
+}
+</script>

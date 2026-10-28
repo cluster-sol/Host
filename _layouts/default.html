@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include seo-head.html %}
+</head>
+<body class="{{ page.body_class }}">
+  {% include header.html %}
+
+  <main id="main-content">
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+
+  <!-- Core JavaScript Assets -->
+  <script src="/assets/js/main.js" defer></script>
+  {% if page.custom_js %}
+    <script src="{{ page.custom_js }}" defer></script>
+  {% endif %}
+</body>
+</html>

@@ -1,0 +1,176 @@
+<section class="section-padding" style="background: #FFFFFF; border-bottom: 1px solid var(--border-subtle);">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-primary">
+        <i class="fas fa-network-wired mr-1"></i> Interactive Architecture Canvas
+      </span>
+      <h2 class="section-title">See How Our Enterprise Systems Connect Under the Hood</h2>
+      <p class="section-subtitle">
+        We do not assemble fragile no-code toys. Every solution is architected on battle-tested edge primitives, relational schemas, and hardened event queues.
+      </p>
+
+      <!-- Architecture Switcher Tabs -->
+      <div class="architecture-tabs" style="margin-top: 2rem;">
+        <button type="button" class="arch-tab-btn active" data-tab="saas">
+          <i class="fas fa-cloud mr-1"></i> 1. High-Scale Web &amp; SaaS
+        </button>
+        <button type="button" class="arch-tab-btn" data-tab="mobile">
+          <i class="fas fa-mobile-screen mr-1"></i> 2. Offline-First Mobile
+        </button>
+        <button type="button" class="arch-tab-btn" data-tab="rag">
+          <i class="fas fa-brain mr-1"></i> 3. Custom AI &amp; RAG Agents
+        </button>
+        <button type="button" class="arch-tab-btn" data-tab="n8n">
+          <i class="fas fa-gears mr-1"></i> 4. End-to-End n8n Automation
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Canvas Display -->
+    <div class="arch-canvas" id="architecture-canvas-display">
+      <!-- 1. SaaS Tab Content (Default Active) -->
+      <div class="arch-tab-panel active" id="tab-panel-saas">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+          <span style="font-weight: 700; color: var(--text-main); font-size: 1.05rem;">
+            Enterprise SaaS Architecture: Sub-second Edge Rendering &amp; Multi-Tenant Database
+          </span>
+          <span class="badge badge-emerald"><i class="fas fa-bolt mr-1"></i> &lt;100ms Global TTFB</span>
+        </div>
+
+        <div class="arch-node-pipeline">
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-globe"></i></div>
+            <div class="node-title">Global Edge CDN</div>
+            <div class="node-tech">Cloudflare Pages &amp; DNS</div>
+          </div>
+          <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-code"></i></div>
+            <div class="node-title">Serverless Compute</div>
+            <div class="node-tech">Next.js 15 App Router</div>
+          </div>
+          <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-database"></i></div>
+            <div class="node-title">Relational Core</div>
+            <div class="node-tech">Supabase PostgreSQL + RLS</div>
+          </div>
+          <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-credit-card"></i></div>
+            <div class="node-title">Billing Engine</div>
+            <div class="node-tech">Razorpay / Stripe Webhooks</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Mobile Tab Content -->
+      <div class="arch-tab-panel" id="tab-panel-mobile" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+          <span style="font-weight: 700; color: var(--text-main); font-size: 1.05rem;">
+            Cross-Platform Mobile Architecture: 60fps Native Performance with Offline-First SQLite Sync
+          </span>
+          <span class="badge badge-primary"><i class="fas fa-wifi mr-1"></i> Offline Capable</span>
+        </div>
+
+        <div class="arch-node-pipeline">
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-mobile"></i></div>
+            <div class="node-title">Mobile Client</div>
+            <div class="node-tech">Flutter 3.x / Kotlin</div>
+          </div>
+          <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-hard-drive"></i></div>
+            <div class="node-title">Local Cache</div>
+            <div class="node-tech">Encrypted SQLite DB</div>
+          </div>
+          <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-server"></i></div>
+            <div class="node-title">Sync Gateway</div>
+            <div class="node-tech">FastAPI &amp; WebSockets</div>
+          </div>
+          <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-bell"></i></div>
+            <div class="node-title">Push Engine</div>
+            <div class="node-tech">Firebase Cloud Messaging</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. AI & RAG Tab Content -->
+      <div class="arch-tab-panel" id="tab-panel-rag" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+          <span style="font-weight: 700; color: var(--text-main); font-size: 1.05rem;">
+            Autonomous RAG Knowledge Architecture: Zero Hallucination with Hybrid Vector Re-ranking
+          </span>
+          <span class="badge badge-emerald"><i class="fas fa-shield-halved mr-1"></i> Guardrail Enforced</span>
+        </div>
+
+        <div class="arch-node-pipeline">
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-file-pdf"></i></div>
+            <div class="node-title">Enterprise Docs</div>
+            <div class="node-tech">PDFs, SQL, Notion, APIs</div>
+          </div>
+          <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-cubes"></i></div>
+            <div class="node-title">Vector Search</div>
+            <div class="node-tech">Pinecone / pgvector Embeddings</div>
+          </div>
+          <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-robot"></i></div>
+            <div class="node-title">LLM Reasoning</div>
+            <div class="node-tech">Claude 3.5 &amp; GPT-4o Guardrails</div>
+          </div>
+          <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-comments"></i></div>
+            <div class="node-title">Client Touchpoint</div>
+            <div class="node-tech">Web, WhatsApp &amp; Voice Copilot</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. n8n Tab Content -->
+      <div class="arch-tab-panel" id="tab-panel-n8n" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+          <span style="font-weight: 700; color: var(--text-main); font-size: 1.05rem;">
+            Enterprise Process Autopilot: Self-Hosted n8n Orchestrating Back-Office Operations
+          </span>
+          <span class="badge badge-amber"><i class="fas fa-infinity mr-1"></i> Zero SaaS Task Fee</span>
+        </div>
+
+        <div class="arch-node-pipeline">
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-envelope-open-text"></i></div>
+            <div class="node-title">Inbound Trigger</div>
+            <div class="node-tech">Website Lead / Email / Webhook</div>
+          </div>
+          <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-gears"></i></div>
+            <div class="node-title">n8n Orchestrator</div>
+            <div class="node-tech">Self-Hosted Docker Node</div>
+          </div>
+          <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+            <div class="node-title">AI Processing</div>
+            <div class="node-tech">Data Extraction &amp; Summarization</div>
+          </div>
+          <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+          <div class="arch-node">
+            <div class="node-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+            <div class="node-title">Auto Execution</div>
+            <div class="node-tech">CRM Sync, Invoice, WhatsApp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

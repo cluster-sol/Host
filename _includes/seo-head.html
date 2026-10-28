@@ -1,0 +1,43 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% capture page_title %}{% if page.title %}{{ page.title }} | {{ site.company.name }}{% else %}{{ site.title }}{% endif %}{% endcapture %}
+{% capture page_desc %}{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
+{% capture page_url %}{{ site.url }}{{ page.url }}{% endcapture %}
+
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ page_desc }}">
+<meta name="keywords" content="Enterprise Web Apps, Mobile App Development, Autonomous AI Agents, RAG Knowledge Base, n8n Automation, Cloudflare Workers, Next.js 15, IT Agency India">
+<meta name="author" content="{{ site.company.name }}">
+<link rel="canonical" href="{{ page_url }}">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+<meta property="og:url" content="{{ page_url }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_desc }}">
+<meta property="og:image" content="{{ site.url }}/assets/brand/company_logo.svg">
+<meta property="og:site_name" content="{{ site.company.name }}">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page_title }}">
+<meta name="twitter:description" content="{{ page_desc }}">
+<meta name="twitter:image" content="{{ site.url }}/assets/brand/company_logo.svg">
+
+<!-- Favicon & Manifest -->
+<link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#1E3A8A">
+
+<!-- Fonts & Font Awesome Icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- Core Stylesheets -->
+<link rel="stylesheet" href="/assets/css/main.css">
+{% if page.custom_css %}
+<link rel="stylesheet" href="{{ page.custom_css }}">
+{% endif %}

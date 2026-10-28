@@ -1,0 +1,84 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Col 1: Brand & Registration Details -->
+      <div class="footer-brand">
+        <a href="/" aria-label="{{ site.company.name }}">
+          <img src="/assets/brand/company_logo_light.svg" alt="{{ site.company.name }}" width="220" height="48">
+        </a>
+        <p class="footer-tagline">
+          {{ site.company.tagline }}. Engineering resilient digital infrastructure, edge architectures, and autonomous AI pipelines for forward-thinking enterprises.
+        </p>
+        
+        <div style="font-size: 0.8rem; color: #64748b; line-height: 1.6; margin-bottom: 1.25rem;">
+          <div><strong>CIN:</strong> {{ site.company.cin }}</div>
+          <div><strong>GSTIN:</strong> {{ site.company.gstin }} (SAC {{ site.company.sac_code }})</div>
+          <div><strong>LUT Bond ARN:</strong> {{ site.company.lut_arn }} (Zero-Rated Global Export)</div>
+          <div><strong>UDYAM MSME:</strong> {{ site.company.udyam }}</div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem;">
+          <a href="{{ site.company.social.github }}" target="_blank" rel="noopener noreferrer" style="color: #94A3B8; font-size: 1.15rem;" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="{{ site.company.social.linkedin }}" target="_blank" rel="noopener noreferrer" style="color: #94A3B8; font-size: 1.15rem;" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="{{ site.company.social.x }}" target="_blank" rel="noopener noreferrer" style="color: #94A3B8; font-size: 1.15rem;" title="X"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://wa.me/{{ site.company.whatsapp | remove: '+' }}" target="_blank" rel="noopener noreferrer" style="color: #10B981; font-size: 1.15rem;" title="WhatsApp Direct"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <!-- Col 2: Services -->
+      <div>
+        <h4 class="footer-col-title">Capabilities</h4>
+        <ul class="footer-links">
+          {% for link in site.data.navigation.footer.services %}
+            <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Col 3: Company -->
+      <div>
+        <h4 class="footer-col-title">Agency</h4>
+        <ul class="footer-links">
+          {% for link in site.data.navigation.footer.company %}
+            <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Col 4: Tools & Portals -->
+      <div>
+        <h4 class="footer-col-title">Interactive</h4>
+        <ul class="footer-links">
+          {% for link in site.data.navigation.footer.tools %}
+            <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Col 5: Legal & KYC Compliance (Mandatory for Stripe / Razorpay) -->
+      <div>
+        <h4 class="footer-col-title">Compliance</h4>
+        <ul class="footer-links">
+          {% for link in site.data.navigation.footer.legal %}
+            <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Row -->
+    <div class="footer-bottom">
+      <div style="font-size: 0.8rem; color: #64748B;">
+        © {{ site.time | date: '%Y' }} {{ site.company.legal_name }}. All rights reserved. Registered Office: {{ site.company.address.street }}, {{ site.company.address.city }}, {{ site.company.address.state }} {{ site.company.address.pincode }}, {{ site.company.address.country }}.
+      </div>
+      <div class="footer-compliance-badges">
+        <span class="badge badge-dark text-xs"><i class="fas fa-shield-halved text-emerald-400 mr-1"></i> ISO-Grade Architecture</span>
+        <span class="badge badge-dark text-xs"><i class="fas fa-file-invoice text-blue-400 mr-1"></i> GST &amp; LUT Compliant</span>
+        <span class="badge badge-dark text-xs"><i class="fas fa-globe text-cyan-400 mr-1"></i> Edge Distributed (Cloudflare)</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Global Toast Container for Async Messages -->
+<div class="toast-container" id="toast-container"></div>

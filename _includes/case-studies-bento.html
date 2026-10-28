@@ -1,0 +1,56 @@
+<section class="section-padding" id="case-studies" style="background: var(--bg-page); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-emerald">
+        <i class="fas fa-chart-line mr-1"></i> Verified ROI &amp; Proof
+      </span>
+      <h2 class="section-title">Architected for Scalability. Measured in Profit.</h2>
+      <p class="section-subtitle">
+        Inspect how our production builds eliminated manual operational bottlenecks, handled millions in transactional volume, and accelerated customer acquisition.
+      </p>
+    </div>
+
+    <div class="bento-grid">
+      {% for study in site.data.case_studies %}
+        <div class="bento-card {% if forloop.first %}bento-span-8{% elsif forloop.index == 2 %}bento-span-4{% else %}bento-span-12{% endif %}">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <span class="badge badge-primary text-xs" style="margin-bottom: 0.4rem;">{{ study.category }}</span>
+              <h3 style="font-size: 1.35rem; color: var(--text-main); margin: 0;">{{ study.title }}</h3>
+              <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">
+                Client: <strong>{{ study.client }}</strong> • Industry: {{ study.industry }}
+              </div>
+            </div>
+            <span class="badge badge-emerald">{{ study.badge }}</span>
+          </div>
+
+          <p style="font-size: 0.95rem; color: var(--text-body); line-height: 1.6; margin-bottom: 1rem;">
+            {{ study.summary }}
+          </p>
+
+          <!-- Metrics Row -->
+          <div class="bento-metric-row">
+            {% for metric in study.roi_metrics %}
+              <div>
+                <span class="metric-box-val">{{ metric.value }}</span>
+                <span class="metric-box-lbl">{{ metric.label }}</span>
+              </div>
+            {% endfor %}
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-subtle); flex-wrap: wrap; gap: 0.75rem;">
+            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+              {% for tech in study.tech_stack limit:3 %}
+                <span class="tech-pill font-mono" style="font-size: 0.7rem;">{{ tech }}</span>
+              {% endfor %}
+            </div>
+            <a href="/work/" class="btn btn-secondary btn-sm" style="font-size: 0.8rem;">
+              <span>Inspect Architecture</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

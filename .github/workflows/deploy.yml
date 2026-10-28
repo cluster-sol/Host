@@ -1,0 +1,150 @@
+name: Build and Deploy Website
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+  repository_dispatch:
+    types: [new-article-post]
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+env:
+  # The site's local .bundle/config points at a developer machine; force a
+  # repository-local path in CI.
+  BUNDLE_PATH: vendor/bundle
+  JEKYLL_ENV: production
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  build:
+    name: Build Jekyll site
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Checkout website repository
+        uses: actions/checkout@v4
+        with:
+          path: ./site
+          persist-credentials: false
+
+      # ---------------------------------------------------------------------
+      # Private content repository is the source of truth for posts.
+      # It is optional at build time: if the token is missing or the repo is
+      # unavailable we keep the posts already committed in this repository so
+      # the website still deploys.
+      # ---------------------------------------------------------------------
+      - name: 2. Checkout private blog repository
+        id: blog
+        continue-on-error: true
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.BLOG_REPOSITORY || 'cluster-sol/blogs' }}
+          token: ${{ secrets.BLOG_REPO_TOKEN }}
+          ref: ${{ vars.BLOG_REPO_BRANCH || 'main' }}
+          path: ./blog
+          persist-credentials: false
+
+      - name: 3. Sync posts from the private blog repository
+        run: |
+          set -euo pipefail
+          # A successful checkout means the private repo is authoritative, even
+          # when every content folder is empty (all articles deleted in the CMS).
+          # Only fall back to the website's committed posts when the checkout
+          # itself failed or none of the content folders exist yet.
+          if [ "${{ steps.blog.outcome }}" = "success" ]; then
+            has_content=0
+            for folder in blogposts announcements; do
+              if [ -d "./blog/$folder" ]; then has_content=1; fi
+            done
+
+            if [ "$has_content" = "1" ]; then
+              echo "Syncing posts from the private blog repository (deletions included)."
+              rm -rf ./site/_posts
+              mkdir -p ./site/_posts
+              for folder in blogposts announcements; do
+                if [ -d "./blog/$folder" ]; then
+                  cp -a "./blog/$folder/." ./site/_posts/
+                fi
+              done
+              find ./site/_posts -maxdepth 1 -name '.gitkeep' -delete
+
+              expected=$(find ./blog/blogposts ./blog/announcements -maxdepth 1 -name '*.md' 2>/dev/null | wc -l)
+              count=$(find ./site/_posts -maxdepth 1 -name '*.md' | wc -l)
+              echo "Posts available for build: $count"
+              if [ "$expected" -ne "$count" ]; then
+                echo "::error::Filename collision across content folders: expected $expected posts, copied $count. Rename the duplicate slug."
+                exit 1
+              fi
+            else
+              echo "::warning::Private blog repository has no blogposts/ or announcements/ folder. Building with posts committed in the website repository."
+            fi
+          else
+            echo "::warning::Private blog repository unavailable. Building with posts committed in the website repository."
+          fi
+
+          if [ -d ./blog/assets/images/blog ]; then
+            echo "Copying CMS-uploaded blog images."
+            mkdir -p ./site/assets/images/blog
+            cp -a ./blog/assets/images/blog/. ./site/assets/images/blog/
+          fi
+
+      - name: 4. Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+          working-directory: ./site
+
+      - name: 5. Build with Jekyll
+        working-directory: ./site
+        run: bundle exec jekyll build --trace
+
+      - name: 6. Preserve Cloudflare Pages files
+        working-directory: ./site
+        run: |
+          set -euo pipefail
+          # Cloudflare Pages directives are Jekyll includes; make sure they land
+          # in the output even if the theme changes.
+          for file in _headers _redirects; do
+            if [ -f "$file" ]; then cp "$file" "_site/$file"; fi
+          done
+
+      - name: 7. Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jekyll-site
+          path: ./site/_site
+          retention-days: 1
+
+  deploy:
+    name: Deploy to Cloudflare Pages
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: 1. Checkout source (Cloudflare Functions)
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: 2. Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: jekyll-site
+          path: ./_site
+
+      - name: 3. Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.153.0"
+          command: pages deploy ./_site --project-name=cluster-sol --commit-dirty=true

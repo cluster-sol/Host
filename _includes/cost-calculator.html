@@ -1,0 +1,153 @@
+<section class="section-padding" id="roi-calculator" style="background: var(--bg-page);">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-primary">
+        <i class="fas fa-calculator mr-1"></i> Transparent Pricing Engine
+      </span>
+      <h2 class="section-title">Instant Project Cost &amp; AI ROI Calculator</h2>
+      <p class="section-subtitle">
+        Estimate your sprint investment and see exactly how many hundreds of manual team hours our autonomous systems will save each month.
+      </p>
+    </div>
+
+    <div class="calc-wrapper">
+      <div class="calc-grid">
+        <!-- Left: Interactive Controls -->
+        <div class="calc-inputs">
+          <!-- Step 1: Select Platform -->
+          <div class="calc-group">
+            <label class="calc-label">
+              <span>1. Select Primary Platform</span>
+              <span class="calc-label-val" id="selected-platform-name">Custom Web &amp; SaaS</span>
+            </label>
+            <div class="calc-platform-grid">
+              <div class="platform-card selected" data-platform="web" data-base-inr="80000" data-base-usd="1200">
+                <i class="fas fa-globe text-xl text-blue-600"></i>
+                <div class="platform-card-title">Web &amp; SaaS</div>
+              </div>
+              <div class="platform-card" data-platform="mobile" data-base-inr="150000" data-base-usd="2200">
+                <i class="fas fa-mobile-screen text-xl text-indigo-600"></i>
+                <div class="platform-card-title">Mobile App</div>
+              </div>
+              <div class="platform-card" data-platform="ai" data-base-inr="95000" data-base-usd="1500">
+                <i class="fas fa-robot text-xl text-cyan-600"></i>
+                <div class="platform-card-title">AI &amp; RAG Agent</div>
+              </div>
+              <div class="platform-card" data-platform="n8n" data-base-inr="55000" data-base-usd="900">
+                <i class="fas fa-gears text-xl text-emerald-600"></i>
+                <div class="platform-card-title">n8n Automation</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Scale & Complexity Slider -->
+          <div class="calc-group">
+            <label class="calc-label" for="calc-scale-slider">
+              <span>2. Project Scope / Workflows</span>
+              <span class="calc-label-val" id="calc-scale-val">5 Core Workflows / Modules</span>
+            </label>
+            <input type="range" min="1" max="15" value="5" id="calc-scale-slider" class="calc-slider">
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.4rem;">
+              <span>Lean MVP (1)</span>
+              <span>Growth System (8)</span>
+              <span>Enterprise Scale (15+)</span>
+            </div>
+          </div>
+
+          <!-- Step 3: Add-on Capabilities -->
+          <div class="calc-group">
+            <label class="calc-label">
+              <span>3. Enterprise Features &amp; Add-ons</span>
+            </label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                <input type="checkbox" id="addon-auth" checked class="calc-addon" data-cost-inr="15000" data-cost-usd="250">
+                Role-Based Admin (RBAC)
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                <input type="checkbox" id="addon-payments" checked class="calc-addon" data-cost-inr="20000" data-cost-usd="300">
+                Payment Gateway (Stripe/Razorpay)
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                <input type="checkbox" id="addon-rag" class="calc-addon" data-cost-inr="35000" data-cost-usd="500">
+                Custom Vector RAG Engine
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                <input type="checkbox" id="addon-whatsapp" class="calc-addon" data-cost-inr="25000" data-cost-usd="350">
+                WhatsApp Business API Sync
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 4: Sprint Speed -->
+          <div class="calc-group" style="margin-bottom: 0;">
+            <label class="calc-label">
+              <span>4. Target Delivery Speed</span>
+              <span class="calc-label-val" id="calc-speed-val">Standard Sprint (3–4 Weeks)</span>
+            </label>
+            <div style="display: flex; gap: 0.75rem;">
+              <button type="button" class="btn btn-secondary btn-sm calc-speed-btn active" data-speed="standard" data-mult="1.0" style="flex: 1;">
+                Standard Sprint (3–4 Wks)
+              </button>
+              <button type="button" class="btn btn-secondary btn-sm calc-speed-btn" data-speed="rapid" data-mult="1.25" style="flex: 1;">
+                🚀 Rapid Rush (2 Wks)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Summary Output Panel -->
+        <div class="calc-summary-panel">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="currency-toggle">
+                <button type="button" class="curr-btn active" data-curr="INR">₹ INR</button>
+                <button type="button" class="curr-btn" data-curr="USD">$ USD</button>
+              </div>
+              <span class="badge badge-emerald" style="font-size: 0.65rem;">40/30/30 Milestone</span>
+            </div>
+
+            <div class="calc-price-display">
+              <div class="calc-price-label">Estimated Sprint Investment</div>
+              <div class="calc-price-num" id="calc-price-display">₹1,35,000</div>
+              <div style="font-size: 0.775rem; color: #94A3B8; margin-top: 0.25rem;">
+                SAC Code: <strong>998314</strong> • Export at 0% IGST under LUT
+              </div>
+            </div>
+
+            <div class="calc-roi-metric">
+              <div class="roi-metric-num" id="calc-hours-saved">65+ Hours / Month</div>
+              <p class="roi-metric-desc">
+                Estimated manual employee work eliminated through automated data entry, edge caching, and AI triage.
+              </p>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 0.75rem; border-radius: 8px; font-size: 0.775rem; color: #CBD5E1; margin-bottom: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                <span>40% Kickoff Advance:</span>
+                <strong id="milestone-advance">₹54,000</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                <span>30% Staging UAT Sign-off:</span>
+                <strong id="milestone-uat">₹40,500</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span>30% Production Handover:</span>
+                <strong id="milestone-final">₹40,500</strong>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <a href="/contact/" id="calc-cta-btn" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 0.95rem;">
+              <i class="fas fa-file-invoice mr-1"></i> Lock This Sprint Quote &amp; Book Audit
+            </a>
+            <div style="text-align: center; font-size: 0.7rem; color: #94A3B8; margin-top: 0.5rem;">
+              Auto-generates official SOW contract proposal • No credit card needed
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

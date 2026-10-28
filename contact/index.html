@@ -1,0 +1,149 @@
+---
+layout: default
+title: "Schedule Free 30-Min Tech Audit & Discovery"
+subtitle: "Discuss your project scope, architecture requirements, and timeline with our senior engineering team."
+badge: "Get in Touch"
+custom_js: "/assets/js/contact.js"
+---
+
+<div class="page-hero-banner" style="background: radial-gradient(circle at 50% 0%, rgba(219, 234, 254, 0.5) 0%, rgba(248, 250, 252, 0) 70%); padding: 4.5rem 0 3rem; border-bottom: 1px solid var(--border-subtle); text-align: center;">
+  <div class="container">
+    <span class="badge badge-primary" style="margin-bottom: 0.75rem;">Fast-Track Discovery</span>
+    <h1 style="font-size: 2.75rem; color: var(--text-main); margin-bottom: 0.75rem; font-weight: 900; letter-spacing: -0.03em;">
+      Book Your 30-Min Technical Audit
+    </h1>
+    <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 680px; margin: 0 auto;">
+      We review your current systems, calculate project ROI, and prepare a fixed-price sprint roadmap within 4 business hours.
+    </p>
+  </div>
+</div>
+
+<div class="section-padding" style="background: #FFFFFF;">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 3.5rem;">
+      <!-- Left: Interactive Contact & Google Sheet Form -->
+      <div class="form-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="font-size: 1.65rem; color: var(--text-main); margin: 0;">Project Intake &amp; SOW Scope</h2>
+          <span class="badge badge-emerald text-xs">
+            <i class="fas fa-bolt mr-1"></i> Instant Google Sheets Sync
+          </span>
+        </div>
+
+        <form id="project-contact-form">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+            <div class="form-group">
+              <label class="form-label" for="form-name">Your Full Name *</label>
+              <input type="text" id="form-name" class="form-input" placeholder="Zaid Alamgir" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-email">Work Email Address *</label>
+              <input type="email" id="form-email" class="form-input" placeholder="zaid@company.com" required>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+            <div class="form-group">
+              <label class="form-label" for="form-phone">WhatsApp / Phone Number *</label>
+              <input type="tel" id="form-phone" class="form-input" placeholder="+91 98765 43210" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-company">Company / Organization *</label>
+              <input type="text" id="form-company" class="form-input" placeholder="Nexus Technologies" required>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+            <div class="form-group">
+              <label class="form-label" for="form-service">Required Service *</label>
+              <select id="form-service" class="form-select" required>
+                <option value="High-Conversion Web & Enterprise SaaS">Web &amp; Enterprise SaaS (Next.js)</option>
+                <option value="Native & Cross-Platform Mobile Apps">Mobile Apps (iOS &amp; Android)</option>
+                <option value="Custom AI Integration & Autonomous RAG">Custom AI &amp; RAG Knowledge Agents</option>
+                <option value="End-to-End Business Process Automation">Workflow Automation (Self-hosted n8n)</option>
+                <option value="Cloud DevOps & 24/7 AMC Retainer">Cloud Infrastructure &amp; 24/7 AMC</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-budget">Estimated Budget Range</label>
+              <select id="form-budget" class="form-select">
+                <option value="₹60,000 – ₹1,50,000 (INR)">₹60,000 – ₹1,50,000 (Rapid MVP)</option>
+                <option value="₹1,50,000 – ₹3,50,000 (INR)">₹1,50,000 – ₹3,50,000 (Full-Scale)</option>
+                <option value="₹3,50,000+ (INR)">₹3,50,000+ (Enterprise Multi-Platform)</option>
+                <option value="$1,500 – $3,000 (USD)">$1,500 – $3,000 (Global Export)</option>
+                <option value="$3,000 – $6,000+ (USD)">$3,000 – $6,000+ (Global Export)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-timeline">Target Timeline</label>
+            <select id="form-timeline" class="form-select">
+              <option value="Standard Sprint (3–4 Weeks)">Standard Sprint (3–4 Weeks)</option>
+              <option value="Rapid Rush (2 Weeks)">🚀 Rapid Rush (2 Weeks)</option>
+              <option value="Flexible (1–2 Months)">Flexible (1–2 Months)</option>
+              <option value="Ongoing Monthly Retainer">Ongoing Monthly Retainer</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-message">Project Details, Features &amp; Current Bottlenecks *</label>
+            <textarea id="form-message" class="form-textarea" placeholder="Tell us about what you want to build, existing tech stack, target users, or workflows you want to automate..." required></textarea>
+          </div>
+
+          <button type="submit" id="contact-submit-btn" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center;">
+            <i class="fas fa-paper-plane mr-1"></i> Submit Intake Request
+          </button>
+        </form>
+
+        <div id="contact-status-message"></div>
+      </div>
+
+      <!-- Right: Direct Office & WhatsApp Connect Info -->
+      <div>
+        <!-- Response Guarantee Card -->
+        <div style="background: var(--bg-surface-alt); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2rem;">
+          <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 1rem;">
+            <div style="width: 44px; height: 44px; background: #ECFDF5; border-radius: 8px; color: var(--accent-emerald); display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+              <i class="fas fa-stopwatch"></i>
+            </div>
+            <div>
+              <h4 style="margin: 0; font-size: 1.1rem; color: var(--text-main);">4-Hour SLA Guarantee</h4>
+              <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">Direct founder review</p>
+            </div>
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.6; margin-bottom: 1.5rem;">
+            Every inquiry is routed directly into our leadership Slack and Google Sheets via automated webhook. We review technical feasibility and reply with architecture thoughts within 4 business hours.
+          </p>
+
+          <a href="https://wa.me/{{ site.company.whatsapp | remove: '+' }}?text={{ 'Hi Cluster Sol, I would like to discuss a new software and AI project.' | url_encode }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="width: 100%; justify-content: center; background: #FFFFFF; color: #059669; border-color: #10B981;">
+            <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Chat Directly on WhatsApp
+          </a>
+        </div>
+
+        <!-- Office & Tax Details -->
+        <div style="background: var(--bg-surface-alt); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem; font-size: 0.875rem;">
+          <h4 style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 1rem;">
+            <i class="fas fa-location-dot text-red-500 mr-1"></i> Registered Office &amp; Operations
+          </h4>
+          <p style="color: var(--text-body); line-height: 1.6; margin-bottom: 1.25rem;">
+            <strong>{{ site.company.legal_name }}</strong><br>
+            {{ site.company.address.street }}<br>
+            {{ site.company.address.city }}, {{ site.company.address.state }} {{ site.company.address.pincode }}, {{ site.company.address.country }}
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.85rem;">
+            <div><i class="fas fa-envelope mr-2 text-blue-600"></i> {{ site.company.email }}</div>
+            <div><i class="fas fa-phone mr-2 text-blue-600"></i> {{ site.company.phone }}</div>
+            <div><i class="fas fa-clock mr-2 text-blue-600"></i> Mon–Sat: 09:30 AM – 07:00 PM IST</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include cta-banner.html %}

@@ -1,0 +1,120 @@
+---
+layout: default
+title: "All Engineering & AI Services"
+subtitle: "Explore our full-stack product capabilities, from high-scale SaaS architectures and native apps to self-hosted n8n pipelines and custom RAG agents."
+badge: "Service Portfolio"
+---
+
+<div class="page-hero-banner" style="background: radial-gradient(circle at 50% 0%, rgba(219, 234, 254, 0.5) 0%, rgba(248, 250, 252, 0) 70%); padding: 4.5rem 0 3rem; border-bottom: 1px solid var(--border-subtle); text-align: center;">
+  <div class="container">
+    <span class="badge badge-primary" style="margin-bottom: 0.75rem;">Enterprise Service Catalog</span>
+    <h1 style="font-size: 2.75rem; color: var(--text-main); margin-bottom: 0.75rem; font-weight: 900; letter-spacing: -0.03em;">
+      Full-Stack Engineering &amp; Autonomous AI
+    </h1>
+    <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 720px; margin: 0 auto;">
+      All systems are built with 100% IP handover, transparent milestone billing (40/30/30), and zero-lock-in architectures.
+    </p>
+  </div>
+</div>
+
+<div class="section-padding" style="background: #FFFFFF;">
+  <div class="container">
+    <div class="services-grid" style="margin-bottom: 4rem;">
+      {% for service in site.data.services %}
+        <div class="service-card">
+          <div class="service-card-header">
+            <div class="service-icon-box">
+              {% if service.icon == 'globe' %}<i class="fas fa-globe"></i>
+              {% elsif service.icon == 'smartphone' %}<i class="fas fa-mobile-screen"></i>
+              {% elsif service.icon == 'cpu' %}<i class="fas fa-brain"></i>
+              {% elsif service.icon == 'zap' %}<i class="fas fa-gears"></i>
+              {% elsif service.icon == 'shield-check' %}<i class="fas fa-shield-halved"></i>
+              {% else %}<i class="fas fa-code"></i>{% endif %}
+            </div>
+            <span class="badge badge-primary">{{ service.badge }}</span>
+          </div>
+
+          <h3 class="service-card-title">
+            <a href="{{ service.url }}" style="color: inherit;">{{ service.title }}</a>
+          </h3>
+
+          <p class="service-card-desc">
+            {{ service.description }}
+          </p>
+
+          <div style="margin-bottom: 1.5rem;">
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.5rem; text-transform: uppercase;">
+              Key Architectural Capabilities:
+            </div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.85rem; color: var(--text-body);">
+              {% for highlight in service.key_highlights limit:3 %}
+                <li style="display: flex; gap: 0.4rem; align-items: flex-start;">
+                  <i class="fas fa-check text-emerald-500" style="margin-top: 4px; font-size: 0.75rem;"></i>
+                  <span>{{ highlight }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="service-tech-pills">
+            {% for tech in service.tech_stack %}
+              <span class="tech-pill font-mono">{{ tech }}</span>
+            {% endfor %}
+          </div>
+
+          <div class="service-card-footer">
+            <div class="service-price">
+              {{ service.price_inr }}
+              <span>{{ service.timeline }} • SAC {{ service.sac_code }}</span>
+            </div>
+            <a href="{{ service.url }}" class="btn btn-primary btn-sm">
+              <span>View Blueprint</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Service Comparison Matrix -->
+    <div style="background: var(--bg-surface-alt); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 2.5rem; box-shadow: var(--shadow-sm);">
+      <h3 style="font-size: 1.75rem; color: var(--text-main); margin-bottom: 0.5rem; text-align: center;">
+        Service Pillar Comparison Matrix
+      </h3>
+      <p style="text-align: center; color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">
+        Choose the engagement format that aligns with your timeline and scalability targets.
+      </p>
+
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; background: #FFFFFF; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-sm);">
+          <thead>
+            <tr style="background: #0F172A; color: #FFFFFF; text-align: left;">
+              <th style="padding: 1rem 1.25rem;">Service Capability</th>
+              <th style="padding: 1rem 1.25rem;">Typical Sprint</th>
+              <th style="padding: 1rem 1.25rem;">Core Tech Stack</th>
+              <th style="padding: 1rem 1.25rem;">Pricing Benchmark</th>
+              <th style="padding: 1rem 1.25rem;">Tax &amp; SAC Code</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for service in site.data.services %}
+              <tr style="border-bottom: 1px solid var(--border-subtle);">
+                <td style="padding: 1rem 1.25rem; font-weight: 700; color: var(--text-main);">
+                  <a href="{{ service.url }}" style="color: inherit;">{{ service.short_title }}</a>
+                </td>
+                <td style="padding: 1rem 1.25rem; color: var(--text-body);">{{ service.timeline }}</td>
+                <td style="padding: 1rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--primary);">
+                  {{ service.tech_stack | slice: 0, 2 | join: ", " }}
+                </td>
+                <td style="padding: 1rem 1.25rem; font-weight: 700; color: #065F46;">{{ service.price_inr }}</td>
+                <td style="padding: 1rem 1.25rem; font-size: 0.8rem; color: var(--text-muted);">SAC {{ service.sac_code }} (18% IGST / 0% LUT)</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include cta-banner.html %}

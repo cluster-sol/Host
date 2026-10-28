@@ -1,0 +1,56 @@
+---
+layout: default
+title: "Interactive Project Cost & ROI Calculator"
+subtitle: "Configure your technical requirements, select add-on modules, and calculate estimated budget and employee hours saved."
+badge: "Pricing Calculator"
+custom_js: "/assets/js/cost-calculator.js"
+---
+
+<div class="page-hero-banner" style="background: radial-gradient(circle at 50% 0%, rgba(219, 234, 254, 0.5) 0%, rgba(248, 250, 252, 0) 70%); padding: 4.5rem 0 2rem; border-bottom: 1px solid var(--border-subtle); text-align: center;">
+  <div class="container">
+    <span class="badge badge-primary" style="margin-bottom: 0.75rem;">Interactive Estimation Studio</span>
+    <h1 style="font-size: 2.75rem; color: var(--text-main); margin-bottom: 0.75rem; font-weight: 900; letter-spacing: -0.03em;">
+      Project Cost &amp; AI ROI Calculator
+    </h1>
+    <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 680px; margin: 0 auto;">
+      Instant price benchmarks with transparent 40/30/30 milestone breakdowns. Toggle between INR (₹) and USD ($).
+    </p>
+  </div>
+</div>
+
+{% include cost-calculator.html %}
+
+<!-- FAQ Section for Project Estimator -->
+<section class="section-padding" style="background: #FFFFFF; border-top: 1px solid var(--border-subtle);">
+  <div class="container" style="max-width: 860px;">
+    <div class="section-header">
+      <span class="badge badge-primary">FAQ</span>
+      <h2 class="section-title">Common Estimation &amp; Billing Questions</h2>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+      <div style="background: var(--bg-surface-alt); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+        <h4 style="color: var(--text-main); font-size: 1.05rem; margin-bottom: 0.5rem;">How does the 40/30/30 milestone payment schedule work?</h4>
+        <p style="margin: 0; font-size: 0.925rem; color: var(--text-body); line-height: 1.6;">
+          You only pay <strong>40% upfront</strong> to initiate discovery, Figma UI/UX wireframes, database schemas, and GitHub scaffolding. Once the staging build is deployed and passes User Acceptance Testing (UAT), you pay <strong>30%</strong>. The final <strong>30%</strong> is only paid upon live production cutover and full IP source code handover.
+        </p>
+      </div>
+
+      <div style="background: var(--bg-surface-alt); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+        <h4 style="color: var(--text-main); font-size: 1.05rem; margin-bottom: 0.5rem;">Do you charge extra for international payments or foreign currency?</h4>
+        <p style="margin: 0; font-size: 0.925rem; color: var(--text-body); line-height: 1.6;">
+          No. International clients (US, UK, EU, UAE, Singapore) are billed under our approved <strong>GST Letter of Undertaking (LUT ARN: AD070426008921L)</strong> at <strong>0% IGST</strong> (Zero-Rated Software Export). We support flat-rate Stripe USD billing or direct SWIFT/Wire transfer with automatic e-FIRA generation.
+        </p>
+      </div>
+
+      <div style="background: var(--bg-surface-alt); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+        <h4 style="color: var(--text-main); font-size: 1.05rem; margin-bottom: 0.5rem;">Who owns the code, intellectual property, and database?</h4>
+        <p style="margin: 0; font-size: 0.925rem; color: var(--text-body); line-height: 1.6;">
+          <strong>You own 100% of the intellectual property.</strong> Upon final invoice clearance, the private GitHub repository, Figma files, cloud credentials, and vector database embeddings are completely transferred to your organization. We sign strict Non-Disclosure Agreements (NDAs) prior to project kickoff.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include cta-banner.html %}

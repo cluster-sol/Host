@@ -1,0 +1,108 @@
+# ==============================================================================
+# CLUSTER AI & TECH SOLUTIONS — PRODUCTION JEKYLL CONFIGURATION
+# High-Scale IT & AI Engineering Agency Platform
+# ==============================================================================
+
+title: "Cluster AI & Tech Solutions | Enterprise Web, Apps & Autonomous AI"
+tagline: "Enterprise Web Apps • High-Scale Mobile • Autonomous AI Agents & Workflows"
+description: "We engineer enterprise web applications, high-scale mobile apps, and autonomous AI systems that streamline operations, eliminate repetitive manual workflows, and scale high-growth startups."
+url: "https://clustersol.agency" # Production URL
+baseurl: ""
+
+# Standalone Content Studio (Cloudflare Pages project: cluster-sol-cms)
+cms_url: "https://cms.clustersol.agency"
+
+# Company Single-Source-of-Truth Metadata
+company:
+  name: "Cluster AI & Tech Solutions"
+  legal_name: "Cluster AI Technologies Private Limited"
+  short_name: "Cluster Sol"
+  tagline: "Enterprise Web • Mobile Apps • Autonomous AI & Workflows"
+  cin: "U72900DL2026PTC089214"
+  gstin: "07AAACC2026A1Z8"
+  pan: "AAACC2026A"
+  lut_arn: "AD070426008921L"
+  udyam: "UDYAM-DL-01-0098214"
+  sac_code: "998314"
+  email: "hello@clustersol.agency"
+  support_email: "support@clustersol.agency"
+  billing_email: "billing@clustersol.agency"
+  phone: "+91 98765 43210"
+  whatsapp: "+919876543210"
+  address:
+    street: "14th Floor, Statesman House, Barakhamba Road, Connaught Place"
+    city: "New Delhi"
+    state: "Delhi"
+    pincode: "110001"
+    country: "India"
+  banking:
+    bank_name: "HDFC Bank Ltd."
+    branch: "Connaught Place, New Delhi"
+    account_name: "CLUSTER AI TECHNOLOGIES PVT. LTD."
+    account_number: "50200099882140"
+    ifsc: "HDFC0000003"
+    swift: "HDFCINBBXXX"
+    upi_id: "clustersol@hdfcbank"
+  social:
+    github: "https://github.com/cluster-sol"
+    linkedin: "https://linkedin.com/company/cluster-sol"
+    x: "https://x.com/clustersol"
+    youtube: "https://youtube.com/@clustersol"
+
+# Build Settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+permalink: /blog/:year/:month/:day/:title/
+
+# Drafts (published: false) and future-dated posts stay out of production.
+future: false
+
+# Collections
+collections:
+  services:
+    output: true
+    permalink: /services/:slug/
+  case_studies:
+    output: true
+    permalink: /work/:slug/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+
+paginate: 6
+paginate_path: "/blog/page:num/"
+
+# Files & Folders to Include
+include:
+  - _headers
+  - _redirects
+  - robots.txt
+  - sitemap.xml
+  - site.webmanifest
+  - wrangler.toml
+  - schema.sql
+  - google-apps-script.js
+
+# Files & Folders to Exclude from build output
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/
+  - .jekyll-cache/
+  - README.md
+  - webiste-plan.md
+  - plan.md
+  - node_modules/
+  # Pages Functions are uploaded by Wrangler from the repo root; they must not
+  # be copied into the static build output.
+  - functions/
+  - .github/

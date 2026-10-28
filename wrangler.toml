@@ -1,0 +1,32 @@
+# ==============================================================================
+# Cloudflare Pages Configuration: Cluster AI & Tech Solutions
+# ==============================================================================
+name = "cluster-sol"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "_site"
+
+# ------------------------------------------------------------------------------
+# Optional D1 / KV bindings
+# ------------------------------------------------------------------------------
+# The API functions run without these bindings (they check `context.env.DB`
+# first), so a deployment never fails because a database has not been created
+# yet. Add real IDs here only after creating the resources, or bind them in the
+# Cloudflare dashboard under Pages -> cluster-sol -> Settings -> Functions.
+#
+#   npx wrangler d1 create cluster_sol_prod
+#   npx wrangler d1 execute cluster_sol_prod --remote --file=./schema.sql
+#
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "cluster_sol_prod"
+# database_id = "<real-d1-database-id>"
+#
+# [[kv_namespaces]]
+# binding = "CACHE_KV"
+# id = "<real-kv-namespace-id>"
+
+[vars]
+ENVIRONMENT = "production"
+ADMIN_NOTIFY_EMAIL = "hello@clustersol.agency"
+# Optional Google Apps Script Webhook URL for Google Sheets instant backup
+GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_DEMO_REPLACE_WITH_YOUR_DEPLOYED_ID/exec"

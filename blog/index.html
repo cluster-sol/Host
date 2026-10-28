@@ -1,0 +1,126 @@
+---
+layout: default
+title: "Engineering Blog & Company Announcements"
+subtitle: "Technical deep dives, architecture blueprints, AI agent tutorials, and official company milestones."
+badge: "Cluster Sol Journal"
+---
+
+<div class="page-hero-banner" style="background: radial-gradient(circle at 50% 0%, rgba(219, 234, 254, 0.5) 0%, rgba(248, 250, 252, 0) 70%); padding: 4.5rem 0 3rem; border-bottom: 1px solid var(--border-subtle); text-align: center;">
+  <div class="container">
+    <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+      <span class="badge badge-primary">Technical Bulletins</span>
+      <a href="{{ site.cms_url | default: 'https://cms.clustersol.agency' }}" class="badge badge-emerald" title="Open Blog CMS Editor" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+        <i class="fas fa-pen-nib mr-1"></i> Open Blog CMS Editor
+      </a>
+    </div>
+    <h1 style="font-size: 2.75rem; color: var(--text-main); margin-bottom: 0.75rem; font-weight: 900; letter-spacing: -0.03em;">
+      Engineering Blog &amp; Announcements
+    </h1>
+    <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 680px; margin: 0 auto 2rem;">
+      Read how our engineering team solves high-concurrency database synchronization, constructs deterministic AI guardrails, and automates business operations.
+    </p>
+
+    <!-- Search Input for Articles -->
+    <div style="max-width: 520px; margin: 0 auto;">
+      <div style="position: relative;">
+        <i class="fas fa-search" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+        <input 
+          type="text" 
+          id="blog-search-input" 
+          class="form-input" 
+          placeholder="Search articles by keyword, stack, or category..."
+          style="padding-left: 44px; border-radius: 999px; box-shadow: var(--shadow-sm);"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-padding" style="background: #FFFFFF;">
+  <div class="container">
+    <!-- Category Tabs Filter -->
+    <div style="display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 3.5rem;" id="blog-category-filter">
+      <button type="button" class="btn btn-primary btn-sm blog-filter-btn active" data-filter="all">All Articles</button>
+      <button type="button" class="btn btn-secondary btn-sm blog-filter-btn" data-filter="Announcements">Announcements</button>
+      <button type="button" class="btn btn-secondary btn-sm blog-filter-btn" data-filter="Engineering">Engineering &amp; Edge</button>
+      <button type="button" class="btn btn-secondary btn-sm blog-filter-btn" data-filter="AI & Automation">AI &amp; Automation</button>
+      <button type="button" class="btn btn-secondary btn-sm blog-filter-btn" data-filter="Cloud & DevOps">Cloud &amp; DevOps</button>
+      <button type="button" class="btn btn-secondary btn-sm blog-filter-btn" data-filter="Security">Security</button>
+      <button type="button" class="btn btn-secondary btn-sm blog-filter-btn" data-filter="Product Updates">Product Updates</button>
+      <button type="button" class="btn btn-secondary btn-sm blog-filter-btn" data-filter="Case Studies">Case Studies</button>
+      <button type="button" class="btn btn-secondary btn-sm blog-filter-btn" data-filter="Design & UX">Design &amp; UX</button>
+    </div>
+
+    <!-- Posts Grid -->
+    <div class="blog-grid" id="blog-posts-grid">
+      {% for post in site.posts %}
+        <article class="post-card" data-category="{{ post.category }}">
+          {% if post.cover_image %}
+            <div class="post-card-cover">
+              <img src="{{ post.cover_image }}" alt="{{ post.title }}" loading="lazy">
+            </div>
+          {% endif %}
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="badge badge-primary text-xs">{{ post.category }}</span>
+              <span><i class="far fa-calendar mr-1"></i>{{ post.date | date: "%b %d, %Y" }}</span>
+            </div>
+            <h3 class="post-card-title">
+              <a href="{{ post.url }}">{{ post.title }}</a>
+            </h3>
+            <p class="post-card-excerpt">
+              {{ post.excerpt | strip_html | truncate: 140 }}
+            </p>
+            <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; font-weight: 700;">
+              <span style="color: var(--text-muted);">{{ post.author | default: site.company.name }}</span>
+              <a href="{{ post.url }}" style="color: var(--primary);">Read Post <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('blog-search-input');
+  const filterBtns = document.querySelectorAll('.blog-filter-btn');
+  const cards = document.querySelectorAll('#blog-posts-grid .post-card');
+
+  // Filter Buttons
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        b.classList.remove('btn-primary', 'active');
+        b.classList.add('btn-secondary');
+      });
+      btn.classList.add('btn-primary', 'active');
+      btn.classList.remove('btn-secondary');
+
+      const filter = btn.getAttribute('data-filter');
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category') || '';
+        if (filter === 'all' || cat.toLowerCase().includes(filter.toLowerCase())) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Client-side instant keyword search
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    });
+  }
+});
+</script>
+
+{% include cta-banner.html %}

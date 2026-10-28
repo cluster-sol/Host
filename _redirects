@@ -1,0 +1,9 @@
+# Cloudflare Pages Redirects
+/work/             /case-studies/      301
+/estimate/         /estimator/         301
+/contact-us/       /contact/           301
+/services/ai/      /services/ai-rag-agents/ 301
+
+# The old in-site prototype is replaced by the standalone Content Studio.
+/cms               https://cms.clustersol.agency/  302
+/cms/*             https://cms.clustersol.agency/:splat  302

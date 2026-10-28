@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+<div class="page-hero-banner" style="background: radial-gradient(circle at 50% 0%, rgba(219, 234, 254, 0.5) 0%, rgba(248, 250, 252, 0) 70%); padding: 4rem 0 3rem; border-bottom: 1px solid var(--border-subtle); text-align: center;">
+  <div class="container">
+    {% if page.badge %}
+      <span class="badge badge-primary" style="margin-bottom: 0.75rem;">{{ page.badge }}</span>
+    {% endif %}
+    <h1 style="font-size: 2.75rem; color: var(--text-main); margin-bottom: 0.75rem; font-weight: 900; letter-spacing: -0.03em;">
+      {{ page.title }}
+    </h1>
+    {% if page.subtitle %}
+      <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 680px; margin: 0 auto;">
+        {{ page.subtitle }}
+      </p>
+    {% endif %}
+  </div>
+</div>
+
+<div class="page-body-container section-padding">
+  <div class="container">
+    {{ content }}
+  </div>
+</div>

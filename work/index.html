@@ -1,0 +1,86 @@
+---
+layout: default
+title: "Production Case Studies & Architectural Proof"
+subtitle: "Real architectures, concrete problem breakdowns, and verified business results delivered for our enterprise partners."
+badge: "Proof of Capability"
+---
+
+<div class="page-hero-banner" style="background: radial-gradient(circle at 50% 0%, rgba(219, 234, 254, 0.5) 0%, rgba(248, 250, 252, 0) 70%); padding: 4.5rem 0 3rem; border-bottom: 1px solid var(--border-subtle); text-align: center;">
+  <div class="container">
+    <span class="badge badge-emerald" style="margin-bottom: 0.75rem;">Verified Business Impact</span>
+    <h1 style="font-size: 2.75rem; color: var(--text-main); margin-bottom: 0.75rem; font-weight: 900; letter-spacing: -0.03em;">
+      Architecture Case Studies
+    </h1>
+    <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 720px; margin: 0 auto;">
+      Inspect how we turn complex business logic into high-converting web apps, offline mobile clients, and autonomous AI systems.
+    </p>
+  </div>
+</div>
+
+<div class="section-padding" style="background: #FFFFFF;">
+  <div class="container">
+    <div style="display: flex; flex-direction: column; gap: 3.5rem;">
+      {% for study in site.data.case_studies %}
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 3rem; box-shadow: var(--shadow-md);">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <span class="badge badge-primary text-xs" style="margin-bottom: 0.5rem;">{{ study.category }}</span>
+              <h2 style="font-size: 2rem; color: var(--text-main); margin: 0 0 0.5rem;">{{ study.title }}</h2>
+              <div style="font-size: 0.9rem; color: var(--text-muted);">
+                Client: <strong>{{ study.client }}</strong> • Industry: {{ study.industry }}
+              </div>
+            </div>
+            <span class="badge badge-emerald" style="font-size: 0.85rem; padding: 6px 14px;">
+              <i class="fas fa-arrow-trend-up mr-1"></i> {{ study.badge }}
+            </span>
+          </div>
+
+          <!-- Problem vs Solution Breakdown -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; background: var(--bg-surface-alt); padding: 1.75rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+            <div>
+              <h4 style="color: #991B1B; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+                <i class="fas fa-triangle-exclamation"></i> The Operational Bottleneck
+              </h4>
+              <p style="margin: 0; font-size: 0.95rem; color: var(--text-body); line-height: 1.6;">
+                {{ study.problem }}
+              </p>
+            </div>
+            <div>
+              <h4 style="color: #065F46; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+                <i class="fas fa-check-circle"></i> Our Architectural Solution
+              </h4>
+              <p style="margin: 0; font-size: 0.95rem; color: var(--text-body); line-height: 1.6;">
+                {{ study.solution }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Verified Metrics Row -->
+          <div class="bento-metric-row" style="margin-bottom: 2rem;">
+            {% for metric in study.roi_metrics %}
+              <div style="background: #FFFFFF; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-subtle);">
+                <span class="metric-box-val">{{ metric.value }}</span>
+                <span class="metric-box-lbl">{{ metric.label }}</span>
+              </div>
+            {% endfor %}
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Deployed Stack:</span>
+              {% for tech in study.tech_stack %}
+                <span class="tech-pill font-mono">{{ tech }}</span>
+              {% endfor %}
+            </div>
+            <a href="/contact/?query={{ study.title | url_encode }}" class="btn btn-primary btn-sm">
+              <span>Build Similar Architecture</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% include cta-banner.html %}

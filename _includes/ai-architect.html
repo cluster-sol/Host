@@ -1,0 +1,76 @@
+<div class="ai-terminal" id="hero-ai-architect">
+  <div class="terminal-header">
+    <div class="terminal-controls">
+      <div class="terminal-dot dot-red"></div>
+      <div class="terminal-dot dot-yellow"></div>
+      <div class="terminal-dot dot-green"></div>
+    </div>
+    <div class="terminal-title">
+      <i class="fas fa-terminal"></i>
+      <span>cluster-architect-v2.6.edge</span>
+    </div>
+    <span class="badge badge-emerald" style="font-size: 0.65rem; padding: 2px 8px;">
+      <i class="fas fa-circle text-xs" style="font-size: 6px;"></i> Live Online
+    </span>
+  </div>
+
+  <div class="terminal-body">
+    <div class="terminal-prompt-box">
+      <label class="terminal-input-label">
+        <i class="fas fa-sparkles text-blue-400 mr-1"></i> Quick Presets or Type Your Business Idea:
+      </label>
+      
+      <div class="terminal-chip-list">
+        <button type="button" class="terminal-chip active" data-preset="telehealth">
+          <i class="fas fa-notes-medical mr-1"></i> Telehealth AI Copilot
+        </button>
+        <button type="button" class="terminal-chip" data-preset="fintech">
+          <i class="fas fa-money-bill-transfer mr-1"></i> B2B Payment &amp; FIRA
+        </button>
+        <button type="button" class="terminal-chip" data-preset="rag">
+          <i class="fas fa-brain mr-1"></i> Enterprise Doc RAG
+        </button>
+        <button type="button" class="terminal-chip" data-preset="mobile">
+          <i class="fas fa-mobile-screen mr-1"></i> Offline-First Flutter App
+        </button>
+      </div>
+
+      <form id="ai-architect-form" class="terminal-form">
+        <input 
+          type="text" 
+          id="architect-input" 
+          class="terminal-input" 
+          placeholder="e.g. Real estate CRM with automated WhatsApp tour booking..."
+          value="Telemedicine platform with automated AI doctor note transcription and prescription delivery."
+          required
+        >
+        <button type="submit" class="btn btn-primary btn-sm" id="architect-submit-btn">
+          <i class="fas fa-bolt"></i>
+          <span>Scope</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Output Stream Terminal -->
+    <div class="terminal-output" id="architect-output">
+      <div id="architect-stream-content">
+        <!-- Content dynamically injected by assets/js/ai-architect.js -->
+        <div style="color: #60A5FA; font-weight: 700; margin-bottom: 0.5rem;">
+          <i class="fas fa-check-circle text-emerald-400 mr-1"></i> Architecture Scoped for: Telehealth AI Copilot
+        </div>
+        <div style="color: #94A3B8; font-size: 0.8rem; margin-bottom: 0.75rem;">
+          Sprint Duration: <strong>4 Weeks</strong> | Target Concurrency: <strong>10,000 req/sec</strong>
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 0.65rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.75rem; color: #CBD5E1; margin-bottom: 0.75rem;">
+          <span style="color: #38BDF8;">Next.js 15 Edge</span> → <span style="color: #818CF8;">Supabase HIPAA DB</span> → <span style="color: #34D399;">Whisper AI Transcription</span> → <span style="color: #FBBF24;">Twilio SMS/WhatsApp</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 0.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+          <span style="color: #A5B4FC; font-size: 0.8rem;">Est. Investment: <strong>₹1,80,000 ($2,400)</strong></span>
+          <a href="/estimator/" class="btn btn-primary btn-sm" style="font-size: 0.75rem; padding: 4px 10px;">
+            Customize in ROI Calc <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
